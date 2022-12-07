@@ -7,7 +7,7 @@ def resultFileCreation(Rankings):
     # Check if the results.txt file exists
     if(path.exists("./dist/Results.txt") == False):
         # Initialize the object passing the table headers
-        rTable = PrettyTable(['Topic_id','Q0', 'docno','rank','score','tag'])
+        rTable = PrettyTable([ 'docno','rank','score'])
         # Align the table to the left of the txt file.
         rTable.align='l'
         # Remove borders of the table
@@ -21,7 +21,7 @@ def resultFileCreation(Rankings):
             ranking = 1
             for doc_num, cosSim in value.items():
                 # Column order ['Topic_id/queryno','Q0', 'docno','rank','score','tag']
-                list = [query_num,"Q0",doc_num,ranking,cosSim,"myRun"]
+                list = [doc_num,ranking,cosSim]
                 # increment the ranking
                 ranking +=1
                 # Adding the row of data to the table

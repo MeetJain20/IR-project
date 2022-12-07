@@ -1,25 +1,24 @@
 # Import helper functions
-from preprocess import importQuery, importTweets, buildIndex, lengthOfDocument
+from preprocess import importQuery, importTweets, buildIndex, lengthOfDocument,tweetdict,returnDocs 
 from results import retrieve
 from write import resultFileCreation
 
 
 def evaluate(query=""):
     print(query)
-    print("\n CSI 4107 - Microblog information retrieval system \n")
 
     print("\n Preprocessing... \n")
-    # Load the tweet list.
-    # {'34952194402811904': 'Save BBC World Service from Savage Cuts http://www.petitionbuzz.com/petitions/savews', ...}
-    tweets = importTweets()
+    returnDocs()
+    maptweets = tweetdict()
 
-    # Load the list of queries.
-    # {1: ['bbc', 'world', 'servic', 'staff', 'cut'], ...}
+    tweets = importTweets()
+    
+
     query_file = importQuery()
-    print(query_file)
+    # print(query_file)
     # Build the inverted index.
     index = buildIndex(tweets)
-
+    
     # Get the length of each document.
     document_length = lengthOfDocument(index, tweets)
 
@@ -35,6 +34,8 @@ def evaluate(query=""):
     resultFileCreation(ranking)
 
     print("\n Result File Creation Done! \n")
+
+    # news = returnDocs()
 
 
 if __name__ == "__main__":

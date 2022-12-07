@@ -1,3 +1,4 @@
+import os
 import string
 import json
 import nltk
@@ -5,15 +6,10 @@ import math
 from nltk.stem import PorterStemmer
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
-# Main imports.
 nltk.download('stopwords')
 nltk.download('punkt')
 
-# Import specific packages.
 
-# Download packages if not installed locally.
-# nltk.download('all')
-# Initialize stemmer
 ps = PorterStemmer()
 
 
@@ -31,6 +27,19 @@ def isNumeric(subj):
         return False
 
 
+def tweetdict():
+    listTweets = dict()
+    tweets = (line.strip('\n') for line in open(
+        "./assets/tweet_list.txt", 'r', encoding='utf-8-sig'))
+    print(tweets)
+    for tweet in tweets:
+        key, value = tweet.split('\t')
+        # print(key,value)
+        listTweets[key] = value
+
+    return listTweets
+
+
 def importTweets(verbose=False):
     ''' 
     Import tweets from collection.
@@ -45,10 +54,10 @@ def importTweets(verbose=False):
     tweets = (line.strip('\n') for line in open(
         "./assets/tweet_list.txt", 'r', encoding='utf-8-sig'))
 
-    # Build the dictionary.
     for tweet in tweets:
         key, value = tweet.split('\t')
-        # Tokenize each tweet, and put back in list.
+
+        # print(key,value)
         tweet_list[key] = filterSentence(value, verbose)
 
     return tweet_list
@@ -67,13 +76,17 @@ def importQuery(verbose=False):
     with open('./assets/test_queries.txt', 'r') as file:
         fileContents = file.read()
 
-    queryCheck = fileContents.strip('\n').split('\n\n')
+    queryCheck = fileContents.strip('\n').split("\n")
 
+    print(queryCheck)
     current_tweet = 1
     for x in queryCheck:
-        save = x[x.index('<title>'): x.index('</title>')].strip('<title> ')
-        query_list[current_tweet] = filterSentence(save, verbose)
+        print(x)
+        query_list[current_tweet] = filterSentence(x, verbose)
+        # query_list[current_tweet] = x
         current_tweet += 1
+
+    print(query_list)
 
     return query_list
 
@@ -170,3 +183,27 @@ def lengthOfDocument(inverted_index, tweets, verbose=False):
         print('Length of documents', document_lengths)
 
     return document_lengths
+
+
+def returnDocs():
+    listDocs = dict()
+    DocList = []
+    rankedDocs = (line.strip('\n') for line in open(
+        "./dist/Results.txt", 'r', encoding='utf-8-sig'))
+
+    # rankedDocs = [1:]
+
+    # for docs in rankedDocs:
+    #     docno = docs[1:19]
+    #     DocList.append(docno)
+
+    # for docs in rankedDocs:
+    #     key, value = docs.split('\t')
+    #     # print(key,value)
+    #     listDocs[key] = value
+    # listTweets = dict()
+
+    # listTweetss = tweetdict()
+
+    return "ekjfn"
+# query = importQuery()
