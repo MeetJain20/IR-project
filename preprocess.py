@@ -6,8 +6,8 @@ import math
 from nltk.stem import PorterStemmer
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
-nltk.download('stopwords')
-nltk.download('punkt')
+# nltk.download('stopwords')
+# nltk.download('punkt')
 
 
 ps = PorterStemmer()
@@ -188,14 +188,22 @@ def lengthOfDocument(inverted_index, tweets, verbose=False):
 def returnDocs():
     listDocs = dict()
     DocList = []
+    spaces = []
     rankedDocs = (line.strip('\n') for line in open(
         "./dist/Results.txt", 'r', encoding='utf-8-sig'))
+    # for tweet in rankedDocs:
+    #     print(tweet)
+    #     key = tweet.split('\t')
+    # print(key)
 
-    # rankedDocs = [1:]
+    for docs in rankedDocs:
+        docno = docs[1:19]
 
-    # for docs in rankedDocs:
-    #     docno = docs[1:19]
-    #     DocList.append(docno)
+        space = docs[20:24]
+        DocList.append(docno)
+        spaces.append(space)
+    print(spaces)
+    # print(DocList[1:12])
 
     # for docs in rankedDocs:
     #     key, value = docs.split('\t')
