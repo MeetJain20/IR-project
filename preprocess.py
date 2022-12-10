@@ -198,7 +198,6 @@ def returnDocs():
 
     for docs in rankedDocs:
         docno = docs[1:19]
-
         space = docs[20:24]
         DocList.append(docno)
         spaces.append(space)
