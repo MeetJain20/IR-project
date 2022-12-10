@@ -193,15 +193,9 @@ def returnDocs():
     #     key = tweet.split('\t')
     # print(key)
 
-<<<<<<< HEAD
     for docs in scoreedDocs:
         docno = docs[1:19].strip()
         score = docs[24:40].strip()
-=======
-    for docs in rankedDocs:
-        docno = docs[1:19]
-        space = docs[20:24]
->>>>>>> 96b7016629d4a0e1e5f3e1ffc464f41c3ad292e3
         DocList.append(docno)
         listDocs[docno] = score
         scoreList.append(score)
