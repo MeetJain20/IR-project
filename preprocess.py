@@ -11,13 +11,6 @@ ps = PorterStemmer()
 
 
 def isNumeric(subj):
-    ''' 
-    Check if a string contains numerical values.
-
-    :param str subj: the string to be converted
-    :return: True if a subject string is a number, False otherwise.
-    :rtype: boolean
-    '''
     try:
         return float(subj)
     except Exception:
@@ -38,13 +31,6 @@ def tweetdict():
 
 
 def importTweets(verbose=False):
-    ''' 
-    Import tweets from collection.
-
-    :param boolean verbose: [Optional] Provide printed output of tokens for testing.
-    :return: the tokenized list of queries.
-    :rtype: list
-    '''
     tweet_list = dict()
     # Splits tweet list at newline character.
     # tweets = (line.strip('\n') for line in open('./assets/tweet_list.txt', 'r', encoding='utf-8-sig'))
@@ -60,30 +46,27 @@ def importTweets(verbose=False):
     return tweet_list
 
 
-def importQuery(verbose=False):
-    ''' 
-    Import query from collection.
+def importQuery(query, verbose=False):
 
-    :param boolean verbose: [Optional] Provide printed output of tokens for testing.
-    :return: the tokenized list of queries.
-    :rtype: list
-    '''
     query_list = dict()
 
-    with open('./assets/test_queries.txt', 'r') as file:
-        fileContents = file.read()
+    # with open('./assets/test_queries.txt', 'r') as file:
+    #     fileContents = file.read()
 
-    queryCheck = fileContents.strip('\n').split("\n")
+    # queryCheck = fileContents.strip('\n').split("\n")
+    qlist = query.split(" ")
 
-    print(queryCheck)
+    print(qlist)
+
+    # print(queryCheck, "fggd")
     current_tweet = 1
-    for x in queryCheck:
-        print(x)
-        query_list[current_tweet] = filterSentence(x, verbose)
-        # query_list[current_tweet] = x
-        current_tweet += 1
+    # for x in queryCheck:
+    #     print(x)
+    query_list[current_tweet] = filterSentence(query, verbose)
+    #     # query_list[current_tweet] = x
+    #     current_tweet += 1
 
-    print(query_list)
+    # print(query_list, "dictionary list")
 
     return query_list
 

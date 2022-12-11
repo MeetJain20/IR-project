@@ -13,9 +13,8 @@ def evaluate(query=""):
 
     tweets = importTweets()
 
-    query_file = importQuery()
-    # print(query_file)
-    # Build the inverted index.
+    query_file = importQuery(query)
+
     index = buildIndex(tweets)
 
     # Get the length of each document.
