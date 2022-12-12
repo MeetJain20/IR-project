@@ -1,7 +1,8 @@
 import math
 import json
 
-def retrieve(query_list, inverted_index, document_length, verbose = False):
+
+def retrieve(query_list, inverted_index, document_length, verbose=False):
     # Tokenize query for input to index.
     # ranking[query_num][document_id] = cosSim(di, q)
     query_tfidf = dict()
@@ -18,16 +19,16 @@ def retrieve(query_list, inverted_index, document_length, verbose = False):
         # Calculate the occurences of token in query.
         for token in query:
             if token not in query_index:
-                query_index[token]=1
+                query_index[token] = 1
             else:
-                query_index[token]+=1
+                query_index[token] += 1
 
         # Calculate the tfidf for each token in query.
         for token, occurences in query_index.items():
             try:
                 for document_id, tfidf in inverted_index[token].items():
                     # TODO: Set distinct query tfidf per document.
-                    retrieval[token] = 0.5 + (0.5 * (occurences / max(query_index.values())) * tfidf)
+                    retrieval[token] = 1 + round(math.log(occurences, 2), 3)
                     break
             except KeyError:
                 retrieval[token] = 0.0
@@ -63,16 +64,18 @@ def retrieve(query_list, inverted_index, document_length, verbose = False):
                 continue
             # Calculate the full Dot Product.
             try:
-                doc_cossim[document_id] = dotproduct / (document_len * query_length[query_no])
+                doc_cossim[document_id] = dotproduct / \
+                    (document_len * query_length[query_no])
             except ZeroDivisionError:
                 continue
 
         # Put the ranking of Documents in Descending order into ranking.
-        ranking[query_no] = {k: v for k, v in sorted(doc_cossim.items(), key=lambda doc_cossim: doc_cossim[1], reverse=True)}
+        ranking[query_no] = {k: v for k, v in sorted(
+            doc_cossim.items(), key=lambda doc_cossim: doc_cossim[1], reverse=True)}
 
     if (verbose):
         print('Query Ranking')
-        print(json.dumps(ranking, indent = 2))
+        print(json.dumps(ranking, indent=2))
         print("-" * 40)
 
     return ranking

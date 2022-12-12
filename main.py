@@ -9,7 +9,7 @@ def evaluate(query=""):
 
     print("\n Preprocessing... \n")
     # returnDocs()
-    maptweets = tweetdict()
+    # maptweets = tweetdict()
 
     tweets = importTweets()
 

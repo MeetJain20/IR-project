@@ -23,8 +23,22 @@
       >
         <div
           class="values d-flex flex-row align-center"
-          style="border-bottom: 1px solid #adadad; width: 40rem"
+          style="border-bottom: 1px solid #adadad; width: 73rem"
         >
+          <div
+            class="value"
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              width: 8rem;
+              text-align: center;
+              padding: 15px;
+              border-right: 1px solid #adadad;
+            "
+          >
+            Rank
+          </div>
           <div
             class="value"
             style="
@@ -48,15 +62,29 @@
               width: 10rem;
               text-align: center;
               padding: 15px;
+              border-right: 1px solid #adadad;
             "
           >
             Score
+          </div>
+          <div
+            class="value"
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              width: 25rem;
+              text-align: center;
+              padding: 15px;
+            "
+          >
+            Relevance Feedback
           </div>
         </div>
         {% for item in tweet_list %}
         <div
           class="values d-flex flex-row align-center"
-          style="border-bottom: 1px solid #adadad; width: 40rem"
+          style="border-bottom: 1px solid #adadad; width: 73rem"
         >
           <div
             class="value"
@@ -64,7 +92,7 @@
               display: flex;
               justify-content: center;
               align-items: center;
-              width: 30rem;
+              width: 8rem;
               text-align: center;
               padding: 15px;
               border-right: 1px solid #adadad;
@@ -78,12 +106,60 @@
               display: flex;
               justify-content: center;
               align-items: center;
+              width: 30rem;
+              text-align: center;
+              padding: 15px;
+              border-right: 1px solid #adadad;
+            "
+          >
+            {{item[1]}}
+          </div>
+          <div
+            class="value"
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
               width: 10rem;
+              text-align: center;
+              padding: 15px;
+              border-right: 1px solid #adadad;
+            "
+          >
+            {{item[2]}}
+          </div>
+          <div
+            class="value"
+            style="
+              display: flex;
+              flex-direction: row;
+              justify-content: center;
+              align-items: center;
+              width: 25rem;
               text-align: center;
               padding: 15px;
             "
           >
-            {{item[1]}}
+            <div class="relevant">
+              <button
+                class="btn btn-outline-info mx-2"
+                id="rel{{item[3]}}"
+                style="color: black"
+                onClick="rel(this.id)"
+              >
+                Relevant
+              </button>
+            </div>
+            <div class="nonrelevant">
+              <button
+                class="btn btn-outline-info"
+                id="non{{item[3]}}"
+                style="color: black"
+                onClick="nonrel(this.id)"
+              >
+                Non Relevant
+              </button>
+            </div>
           </div>
           <!-- <div class="value mx-2" style="width: 10rem; text-align: center">
           {{item[2]}}
@@ -103,5 +179,24 @@
       integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
       crossorigin="anonymous"
     ></script>
+    <script type="text/javascript">
+      function rel(clicked_id)
+      {
+        // console.log(clicked_id);
+        if(clicked_id.includes("rel")){
+          let newid = clicked_id.replace("rel",'');
+          console.log("The document "+newid+" is Relevant");
+          }
+      }
+      function nonrel(clicked_id)
+      {
+        // console.log(clicked_id);
+        if(clicked_id.includes("non")){
+          let newid = clicked_id.replace("non",'');
+          console.log("The document "+newid+" is Non-relevant");
+          }
+
+      }
+    </script>
   </body>
 </html>

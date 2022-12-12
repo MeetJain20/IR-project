@@ -21,10 +21,14 @@ def hello_world():
     KrelevantDocs = dict(list(scoreMap.items())[1:11])
     # print(KrelevantDocs)
     finList = []
+    k = 0
     for key, val in KrelevantDocs.items():
         mylist = []
+        k += 1
+        mylist.append(k)
         mylist.append(tweetsMap[key])
         mylist.append(val)
+        mylist.append(key)
         finList.append(mylist)
     print(finList)
 
