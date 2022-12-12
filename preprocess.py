@@ -149,10 +149,6 @@ def returnDocs():
     scoreList = []
     scoreedDocs = (line.strip('\n') for line in open(
         "./dist/Results.txt", 'r', encoding='utf-8-sig'))
-    # for tweet in scoreedDocs:
-    #     print(tweet)
-    #     key = tweet.split('\t')
-    # print(key)
 
     for docs in scoreedDocs:
         docno = docs[1:19].strip()
@@ -160,7 +156,5 @@ def returnDocs():
         DocList.append(docno)
         listDocs[docno] = score
         scoreList.append(score)
-    # print(scoreList[10:200])
 
     return listDocs
-# query = importQuery()

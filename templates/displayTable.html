@@ -185,6 +185,8 @@
         // console.log(clicked_id);
         if(clicked_id.includes("rel")){
           let newid = clicked_id.replace("rel",'');
+          let str = "non"+newid
+          document.getElementById(str).disabled = true
           console.log("The document "+newid+" is Relevant");
           }
       }
@@ -193,6 +195,8 @@
         // console.log(clicked_id);
         if(clicked_id.includes("non")){
           let newid = clicked_id.replace("non",'');
+          let str = "rel"+newid
+          document.getElementById(str).disabled = true
           console.log("The document "+newid+" is Non-relevant");
           }
 

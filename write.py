@@ -22,10 +22,8 @@ def resultFileCreation(Rankings):
         f = open("./dist/Results.txt", "w+")
         f.write(table_text)
 
-        # Close Results.txt file.
         f.close()
         return
-    # Remove file if Results.txt file exists and recall the function.
     else:
         os.remove("./dist/Results.txt")
         resultFileCreation(Rankings)
