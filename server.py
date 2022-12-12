@@ -27,20 +27,7 @@ def hello_world():
         mylist.append(val)
         finList.append(mylist)
     print(finList)
-    # print(tweetsMap[key], "-->", val)
 
-    # result_array = list((line.strip('\n') for line in open(
-    #     "./dist/Results.txt", 'r')))
-    # finResult = []
-    # for sanju in result_array:
-    #     x = sanju.strip()
-    #     my_list = x.split(' ')
-    #     new_list = []
-    #     for jain in my_list:
-    #         print("\n")
-    #         if jain != '':
-    #             new_list.append(jain)
-    #     finResult.append(new_list)
     return render_template("displayTable.html", tweet_list=finList)
 
 

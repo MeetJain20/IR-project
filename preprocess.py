@@ -105,7 +105,7 @@ def buildIndex(documents, verbose=False):
             elif index in inverted_index[token]:
                 inverted_index[token][index] += 1
 
-    print(inverted_index)
+    # print(inverted_index)
 
     for token, current_document in inverted_index.items():
         total_occurence = 0

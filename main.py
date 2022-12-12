@@ -8,7 +8,7 @@ def evaluate(query=""):
     print(query)
 
     print("\n Preprocessing... \n")
-    returnDocs()
+    # returnDocs()
     maptweets = tweetdict()
 
     tweets = importTweets()
@@ -34,15 +34,15 @@ def evaluate(query=""):
     print("\n Result File Creation Done! \n")
 
     # news = returnDocs()
-    tweetsMap = tweetdict()
+    # tweetsMap = tweetdict()
 
-    scoreMap = returnDocs()
+    # scoreMap = returnDocs()
     # print(tweetsMap)
     # print(scoreMap)
-    KrelevantDocs = dict(list(scoreMap.items())[1:11])
-    print(KrelevantDocs)
-    for key, val in KrelevantDocs.items():
-        print(tweetsMap[key], "-->", val)
+    # KrelevantDocs = dict(list(scoreMap.items())[1:11])
+    # print(KrelevantDocs)
+    # for key, val in KrelevantDocs.items():
+    #     print(tweetsMap[key], "-->", val)
 
 
 if __name__ == "__main__":
