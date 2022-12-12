@@ -2,36 +2,24 @@ import os.path
 from os import path
 from prettytable import PrettyTable
 
-# Ordered Ranking[query_no] = {d1 : cosSim, d2 : cosSim, ...}
-def resultFileCreation(Rankings):
-    # Check if the results.txt file exists
-    if(path.exists("./dist/Results.txt") == False):
-        # Initialize the object passing the table headers
-        rTable = PrettyTable([ 'docno','rank','score'])
-        # Align the table to the left of the txt file.
-        rTable.align='l'
-        # Remove borders of the table
-        rTable.border=False
 
-        # Add rows with the data to the table.
-        for query_num,value in Rankings.items():
-            # List used to store all the element of row which will be added to the table once populated.
+def resultFileCreation(Rankings):
+    if (path.exists("./dist/Results.txt") == False):
+        rTable = PrettyTable(['docno', 'rank', 'score'])
+        rTable.align = 'l'
+        rTable.border = False
+
+        for query_num, value in Rankings.items():
             list = []
-            # Re-initialize the ranking for each query.
             ranking = 1
             for doc_num, cosSim in value.items():
-                # Column order ['Topic_id/queryno','Q0', 'docno','rank','score','tag']
-                list = [doc_num,ranking,cosSim]
-                # increment the ranking
-                ranking +=1
-                # Adding the row of data to the table
+                list = [doc_num, ranking, cosSim]
+                ranking += 1
                 rTable.add_row(list)
 
-        # Making all the data in the table into a string.
         table_text = rTable.get_string()
 
-        # Write table to the file after populating the table.
-        f = open("./dist/Results.txt","w+")
+        f = open("./dist/Results.txt", "w+")
         f.write(table_text)
 
         # Close Results.txt file.
@@ -41,5 +29,3 @@ def resultFileCreation(Rankings):
     else:
         os.remove("./dist/Results.txt")
         resultFileCreation(Rankings)
-
-
