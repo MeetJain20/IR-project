@@ -13,21 +13,85 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="contain d-flex flex-column justify-content-center">
-      {% for item in tweet_list %}
-      <div class="values d-flex flex-row align-center my-3">
-        <div class="value mx-2" style="width: 10rem; text-align: center">
-          {{item[0]}}
+    <div
+      class="boxx"
+      style="display: flex; justify-content: center; align-items: center"
+    >
+      <div
+        class="contain d-flex flex-column"
+        style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); margin: 1rem"
+      >
+        <div
+          class="values d-flex flex-row align-center"
+          style="border-bottom: 1px solid #adadad; width: 40rem"
+        >
+          <div
+            class="value"
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              width: 30rem;
+              text-align: center;
+              padding: 15px;
+              border-right: 1px solid #adadad;
+            "
+          >
+            Relevant Tweets
+          </div>
+          <div
+            class="value"
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              width: 10rem;
+              text-align: center;
+              padding: 15px;
+            "
+          >
+            Score
+          </div>
         </div>
-        <div class="value mx-2" style="width: 10rem; text-align: center">
-          {{item[1]}}
-        </div>
-        <div class="value mx-2" style="width: 10rem; text-align: center">
+        {% for item in tweet_list %}
+        <div
+          class="values d-flex flex-row align-center"
+          style="border-bottom: 1px solid #adadad; width: 40rem"
+        >
+          <div
+            class="value"
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              width: 30rem;
+              text-align: center;
+              padding: 15px;
+              border-right: 1px solid #adadad;
+            "
+          >
+            {{item[0]}}
+          </div>
+          <div
+            class="value"
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              width: 10rem;
+              text-align: center;
+              padding: 15px;
+            "
+          >
+            {{item[1]}}
+          </div>
+          <!-- <div class="value mx-2" style="width: 10rem; text-align: center">
           {{item[2]}}
+        </div> -->
         </div>
+        {% endfor %}
       </div>
     </div>
-    {% endfor %}
 
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
