@@ -32,7 +32,6 @@ def tweetdict():
 
 def importTweets(verbose=False):
     tweet_list = dict()
-    # Splits tweet list at newline character.
     # tweets = (line.strip('\n') for line in open('./assets/tweet_list.txt', 'r', encoding='utf-8-sig'))
     tweets = (line.strip('\n') for line in open(
         "./assets/tweet_list.txt", 'r', encoding='utf-8-sig'))
@@ -56,7 +55,7 @@ def importQuery(query, verbose=False):
     # queryCheck = fileContents.strip('\n').split("\n")
     qlist = query.split(" ")
 
-    print(qlist)
+    # print(qlist)
 
     # print(queryCheck, "fggd")
     current_tweet = 1
@@ -66,7 +65,7 @@ def importQuery(query, verbose=False):
     #     # query_list[current_tweet] = x
     #     current_tweet += 1
 
-    # print(query_list, "dictionary list")
+    print(query_list, "dictionary list")
 
     return query_list
 
