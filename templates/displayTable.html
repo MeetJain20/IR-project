@@ -15,15 +15,23 @@
   <body>
     <div
       class="boxx"
-      style="display: flex; justify-content: center; align-items: center"
+      style="
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      "
     >
+      <div class="header my-3" style="font-size: 1.75rem; font-weight: 600">
+        Ranking Tweets based on their Score
+      </div>
       <div
         class="contain d-flex flex-column"
         style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); margin: 1rem"
       >
         <div
           class="values d-flex flex-row align-center"
-          style="border-bottom: 1px solid #adadad; width: 73rem"
+          style="border-bottom: 1px solid #adadad; width: 80rem"
         >
           <div
             class="value"
@@ -38,6 +46,20 @@
             "
           >
             Rank
+          </div>
+          <div
+            class="value"
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              width: 12rem;
+              text-align: center;
+              padding: 15px;
+              border-right: 1px solid #adadad;
+            "
+          >
+            DocNo
           </div>
           <div
             class="value"
@@ -73,7 +95,7 @@
               display: flex;
               justify-content: center;
               align-items: center;
-              width: 25rem;
+              width: 20rem;
               text-align: center;
               padding: 15px;
             "
@@ -84,7 +106,7 @@
         {% for item in tweet_list %}
         <div
           class="values d-flex flex-row align-center"
-          style="border-bottom: 1px solid #adadad; width: 73rem"
+          style="border-bottom: 1px solid #adadad; width: 80rem"
         >
           <div
             class="value"
@@ -99,6 +121,20 @@
             "
           >
             {{item[0]}}
+          </div>
+          <div
+            class="value"
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              width: 12rem;
+              text-align: center;
+              padding: 15px;
+              border-right: 1px solid #adadad;
+            "
+          >
+            {{item[3]}}
           </div>
           <div
             class="value"
@@ -135,7 +171,7 @@
               flex-direction: row;
               justify-content: center;
               align-items: center;
-              width: 25rem;
+              width: 20rem;
               text-align: center;
               padding: 15px;
             "
@@ -180,26 +216,23 @@
       crossorigin="anonymous"
     ></script>
     <script type="text/javascript">
-      function rel(clicked_id)
-      {
+      function rel(clicked_id) {
         // console.log(clicked_id);
-        if(clicked_id.includes("rel")){
-          let newid = clicked_id.replace("rel",'');
-          let str = "non"+newid
-          document.getElementById(str).disabled = true
-          console.log("The document "+newid+" is Relevant");
-          }
+        if (clicked_id.includes("rel")) {
+          let newid = clicked_id.replace("rel", "");
+          let str = "non" + newid;
+          document.getElementById(str).disabled = true;
+          console.log("The document " + newid + " is Relevant");
+        }
       }
-      function nonrel(clicked_id)
-      {
+      function nonrel(clicked_id) {
         // console.log(clicked_id);
-        if(clicked_id.includes("non")){
-          let newid = clicked_id.replace("non",'');
-          let str = "rel"+newid
-          document.getElementById(str).disabled = true
-          console.log("The document "+newid+" is Non-relevant");
-          }
-
+        if (clicked_id.includes("non")) {
+          let newid = clicked_id.replace("non", "");
+          let str = "rel" + newid;
+          document.getElementById(str).disabled = true;
+          console.log("The document " + newid + " is Non-relevant");
+        }
       }
     </script>
   </body>
