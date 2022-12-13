@@ -26,7 +26,7 @@ def tweetdict():
         key, value = tweet.split('\t')
         # print(key,value)
         listTweets[key] = value
-
+    # print(listTweets)
     return listTweets
 
 
@@ -104,8 +104,6 @@ def buildIndex(documents, verbose=False):
             elif index in inverted_index[token]:
                 inverted_index[token][index] += 1
 
-    # print(inverted_index)
-
     for token, current_document in inverted_index.items():
         total_occurence = 0
         for document, occurence in current_document.items():
@@ -120,6 +118,8 @@ def buildIndex(documents, verbose=False):
 
     if verbose:
         print("\r Inverted Index")
+        with open("invertedIndex.json", "w") as outfile:
+            json.dump(inverted_index, outfile)
         print(json.dumps(inverted_index, indent=2))
         print("-" * 40)
 

@@ -7,13 +7,14 @@ Project Overview
 
 An IR system to retrieve the tweets using a query entered and ranking them according to their score.
 
-The following have been implented :
+The following have been implemented :
 
 1. Stemming, Stopwords removal, Tokenisation.
 2. Building the inverted index, and tfidf weighting.
 3. Calculating the cosine similarity and ranking the documents.
 4. Writing the result into "/dist/Results.txt"
 5. Capturing user feedback
+6. Integrating the IR system in flask.
 
 Setting Up and Running the Code:
 

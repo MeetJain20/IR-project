@@ -15,8 +15,9 @@ def evaluate(query=""):
     print("\n Preprocessing Done! \n")
 
     print("\n Building the inverted index \n")
+    verbose = True
 
-    index = buildIndex(tweets)
+    index = buildIndex(tweets, verbose)
 
     print("\n  Done! \n")
 

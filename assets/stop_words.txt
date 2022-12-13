@@ -73,7 +73,6 @@ being
 below
 beside
 besides
-best
 better
 between
 beyond
@@ -232,8 +231,6 @@ going
 gone
 good
 got
-great
-greater
 h
 had
 haedly
