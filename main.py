@@ -20,7 +20,7 @@ def evaluate(query=""):
 
     print("\n  Done! \n")
 
-    print("\n Term Weighting and Ranking..\n")
+    print("\n Retrieving and Ranking..\n")
 
     document_length = lengthOfDocument(index, tweets)
 
